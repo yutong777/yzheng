@@ -16,6 +16,7 @@
             --dark: #2c3e50; /* Dark Slate */
             --light: #fdfbf7; /* Off-White */
             --accent: #e74c3c; /* Red Accent */
+            --warning: #f39c12; /* Orange Warning */
         }
         body {
             font-family: 'Arimo', sans-serif;
@@ -39,6 +40,8 @@
             color: white;
             padding: 3rem 2rem;
             text-align: center;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
         }
         .header-section h1 {
             font-family: 'Bebas Neue', sans-serif;
@@ -53,11 +56,90 @@
             margin: 0;
             opacity: 0.9;
         }
+        
+        .section-container {
+            padding: 2rem;
+            background-color: var(--dark);
+            color: var(--light);
+            text-align: center;
+        }
+
+        .section-container h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+        }
+
+        .thank-you-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+
+        .thank-you-card {
+            background-color: #34495e; /* Slightly lighter dark color */
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .thank-you-card h3 {
+            color: #f1c40f; /* Yellow accent */
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .thank-you-card p {
+            color: var(--light);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .venue-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .venue-item {
+            background-color: var(--secondary);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1 1 200px;
+            min-width: 180px;
+            max-width: 280px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .venue-item i {
+            font-size: 1.5rem;
+            color: var(--light);
+            margin-bottom: 0.5rem;
+        }
+        .info-link {
+            text-decoration: underline;
+            color: white; 
+            font-weight: 600;
+        }
+
+
+        /* Schedule Section Styling */
+        .schedule-section {
+             padding: 2rem;
+             background-color: var(--light);
+        }
         .schedule-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1rem;
-            padding: 2rem;
+            padding: 0;
+            margin-top: 1rem;
         }
         .day-card {
             background-color: #ecf0f1;
@@ -77,6 +159,16 @@
             align-items: center;
             justify-content: space-between;
         }
+        .arrival-note {
+            background-color: var(--warning);
+            color: var(--dark);
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            text-align: center;
+        }
         .activity-list {
             list-style: none;
             padding: 0;
@@ -93,11 +185,11 @@
         .activity-item:last-child {
             border-bottom: none;
         }
-        /* FIX: Increased width and added padding to align activity names vertically */
+        /* FIX: Ensure activity time has enough space and the name aligns */
         .activity-time {
             font-weight: 700;
             color: var(--dark);
-            min-width: 140px; 
+            min-width: 150px; 
             max-width: 150px; 
             flex-shrink: 0;
             white-space: nowrap; 
@@ -109,60 +201,8 @@
             align-items: center;
             padding-left: 0.5rem; 
         }
-        .generator-button {
-            /* Removed since buttons are deleted */
-            display: none;
-        }
-        .generator-output {
-            /* Removed since buttons are deleted */
-            display: none !important;
-        }
-
-        .highlight-section {
-            background-color: var(--dark);
-            color: var(--light);
-            padding: 2rem;
-            text-align: center;
-        }
-        .highlight-section h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            letter-spacing: 2px;
-            margin-bottom: 1.5rem;
-            color: var(--light);
-        }
-        .highlight-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-        }
-        .highlight-item {
-            background-color: var(--secondary);
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-            flex: 1 1 200px;
-            min-width: 180px;
-            max-width: 280px;
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-        .highlight-item i {
-            font-size: 1.5rem;
-            color: var(--light);
-            margin-bottom: 0.5rem;
-        }
-        .info-link {
-            text-decoration: underline;
-            color: white; 
-            font-weight: 600;
-        }
 
         @media (min-width: 768px) {
-            .schedule-grid {
-                grid-template-columns: 1fr;
-            }
             .header-section h1 {
                 font-size: 5rem;
             }
@@ -177,12 +217,38 @@
         <h2>DECEMBER 4TH, 2025 | CHICAGO</h2>
     </div>
 
-    <div class="schedule-grid">
-        <!-- Day 1: Single Day Event -->
+    
+    <!-- 1. VENUE SECTION (First content section below header) -->
+    <div class="section-container">
+        <h2><i class="fas fa-location-dot mr-2"></i> VENUE</h2>
+        <div class="venue-grid">
+            <div class="venue-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p><strong>Address:</strong> 2415 North Milwaukee Avenue, Chicago, IL 60647</p>
+            </div>
+            <div class="venue-item">
+                <i class="fas fa-house-user"></i>
+                <p><strong>Airbnb Link:</strong> <a href="https://www.airbnb.com/rooms/21321497?source_impression_id=p3_1764098117_P3q6LNbhdYsaFc03" target="_blank" class="info-link">Click for Venue Details</a></p>
+            </div>
+            <div class="venue-item">
+                <i class="fas fa-book-open"></i>
+                <p><strong>House Guidebook:</strong> <a href="https://bangtel.notion.site/El-Motel-UNITED-Guidebook-a0b0ec7d89c24ecca341d58ef6af080f" target="_blank" class="info-link">View Rules & Info</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. SCHEDULE SECTION (Remains the largest body section, below Venue) -->
+    <div class="schedule-section">
         <div class="day-card">
             <h3>
                 <span><i class="fas fa-calendar-day mr-2"></i> DECEMBER 4TH: 9:00 AM - 8:00 PM CST</span>
             </h3>
+            
+            <!-- Early Arrival Note -->
+            <div class="arrival-note">
+                <i class="fas fa-clock mr-2"></i> Please arrive 10-15 minutes before the start time.
+            </div>
+
             <ul class="activity-list">
                 <li class="activity-item">
                     <span class="activity-time">9:00 AM - 9:30 AM</span>
@@ -234,21 +300,25 @@
             </ul>
         </div>
     </div>
-
-    <div class="highlight-section">
-        <h2><i class="fas fa-location-dot mr-2"></i> VENUE</h2>
-        <div class="highlight-grid">
-            <div class="highlight-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <p><strong>Address:</strong> 2415 North Milwaukee Avenue, Chicago, IL 60647</p>
+    
+    <!-- 3. THANK YOU SECTION (Moved to the bottom) -->
+    <div class="section-container" style="border-top-left-radius: 0; border-top-right-radius: 0;">
+        <h2><i class="fas fa-heart mr-2"></i> SPECIAL THANKS TO</h2>
+        <div class="thank-you-grid">
+            <!-- Leadership Sponsors (Moved to the first position) -->
+            <div class="thank-you-card">
+                <h3><i class="fas fa-users mr-2"></i> Leadership Sponsors</h3>
+                <p>Haiyan, Jessie, Tao</p>
             </div>
-            <div class="highlight-item">
-                <i class="fas fa-house-user"></i>
-                <p><strong>Airbnb Link:</strong> <a href="https://www.airbnb.com/rooms/21321497?source_impression_id=p3_1764098117_P3q6LNbhdYsaFc03" target="_blank" class="info-link">Click for Venue Details</a></p>
+            <!-- Lead Organizers -->
+            <div class="thank-you-card">
+                <h3><i class="fas fa-hand-holding-heart mr-2"></i> Lead Organizers</h3>
+                <p>Breanne, Jingjing, Mingyu, Yichun, Yutong</p>
             </div>
-            <div class="highlight-item">
-                <i class="fas fa-book-open"></i>
-                <p><strong>House Guidebook:</strong> <a href="https://bangtel.notion.site/El-Motel-UNITED-Guidebook-a0b0ec7d89c24ecca341d58ef6af080f" target="_blank" class="info-link">View Rules & Info</a></p>
+            <!-- Volunteers -->
+            <div class="thank-you-card">
+                <h3><i class="fas fa-hands-helping mr-2"></i> Volunteers</h3>
+                <p>Baris, Bowen, Hasha, Hov, Mantas, Scott</p>
             </div>
         </div>
     </div>
