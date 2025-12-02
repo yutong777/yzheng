@@ -128,6 +128,20 @@
             font-weight: 600;
         }
 
+        /* Adjusting h3 color specifically inside .venue-item for the dinner location */
+        .venue-item h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.25rem;
+            letter-spacing: 1px;
+            color: white; 
+            margin-bottom: 0.5rem;
+        }
+        
+        /* New style to ensure consistency for content in venue items */
+        .venue-item p strong {
+            font-size: 0.9rem; /* Matches the font size of the surrounding text */
+        }
+
 
         /* Schedule Section Styling */
         .schedule-section {
@@ -202,6 +216,97 @@
             padding-left: 0.5rem; 
         }
 
+        /* Subgroup Table Styling */
+        .subgroup-section {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #fff;
+            border-radius: 10px;
+            border: 1px solid #d35400;
+            margin-bottom: 1rem; /* Added space between tables if multiple exist */
+        }
+        .subgroup-section h4 {
+            color: var(--dark);
+            font-family: 'Arimo', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .subgroup-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+        .subgroup-table th, .subgroup-table td {
+            border: 1px solid #bdc3c7;
+            padding: 0.75rem;
+            text-align: left;
+            font-size: 0.9rem; /* Base font size for td content */
+            vertical-align: top;
+        }
+        /* UPDATED TH STYLES - Set to match td font size (0.9rem) */
+        .subgroup-table th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 700;
+            font-family: 'Arimo', sans-serif; 
+            font-size: 0.9rem; /* MATCHES TD FONT SIZE */
+            letter-spacing: 0; 
+            width: 33.33%; 
+        }
+        .subgroup-table .col-two th {
+            width: 50%;
+        }
+        /* Ensuring internal labels maintain bold style without explicit font size */
+        .subgroup-table td strong {
+            color: var(--primary);
+            font-weight: 700;
+            /* Inherits font-size: 0.9rem; from td */
+        }
+        
+        .full-width-cell {
+            background-color: #f0f0f0; /* Light background for the flexible row */
+            text-align: center !important;
+            font-weight: 700;
+            color: var(--dark);
+            padding: 0.5rem 0.75rem;
+        }
+
+
+        @media (max-width: 600px) {
+            .subgroup-table th, .subgroup-table td {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .subgroup-table thead {
+                display: none; /* Hide header on small screens */
+            }
+            .subgroup-table tr {
+                margin-bottom: 1rem;
+                display: block;
+                border: 1px solid #d35400;
+                border-radius: 8px;
+            }
+            .subgroup-table td {
+                border-bottom: none;
+            }
+            .subgroup-table tr td:first-child {
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
+            }
+            .subgroup-table tr td:last-child {
+                border-bottom-left-radius: 8px;
+                border-bottom-right-radius: 8px;
+            }
+            .full-width-cell {
+                display: block; /* Ensure full width on mobile */
+                border-bottom: none !important;
+            }
+        }
+
+
         @media (min-width: 768px) {
             .header-section h1 {
                 font-size: 5rem;
@@ -218,26 +323,37 @@
     </div>
 
     
-    <!-- 1. VENUE SECTION (First content section below header) -->
+    <!-- 1. VENUE SECTION -->
     <div class="section-container">
         <h2><i class="fas fa-location-dot mr-2"></i> VENUE</h2>
         <div class="venue-grid">
+            <!-- Airbnb Address -->
             <div class="venue-item">
                 <i class="fas fa-map-marker-alt"></i>
                 <p><strong>Address:</strong> 2415 North Milwaukee Avenue, Chicago, IL 60647</p>
             </div>
+            <!-- Airbnb Link -->
             <div class="venue-item">
                 <i class="fas fa-house-user"></i>
                 <p><strong>Airbnb Link:</strong> <a href="https://www.airbnb.com/rooms/21321497?source_impression_id=p3_1764098117_P3q6LNbhdYsaFc03" target="_blank" class="info-link">Click for Venue Details</a></p>
             </div>
+            <!-- House Guidebook -->
             <div class="venue-item">
                 <i class="fas fa-book-open"></i>
                 <p><strong>House Guidebook:</strong> <a href="https://bangtel.notion.site/El-Motel-UNITED-Guidebook-a0b0ec7d89c24ecca341d58ef6af080f" target="_blank" class="info-link">View Rules & Info</a></p>
             </div>
+            <!-- Team Dinner Location -->
+            <div class="venue-item">
+                <i class="fas fa-utensils"></i>
+                <p>
+                    <strong style="font-size: 0.9rem;">Dinner Location:</strong> La Victoria Barra + Cocina Mexicana
+                    <a href="https://maps.app.goo.gl/szRzeqSp5c9dCaGu6" target="_blank" class="info-link">Map and Directions</a>
+                </p>
+            </div>
         </div>
     </div>
 
-    <!-- 2. SCHEDULE SECTION (Remains the largest body section, below Venue) -->
+    <!-- 2. SCHEDULE SECTION -->
     <div class="schedule-section">
         <div class="day-card">
             <h3>
@@ -246,7 +362,7 @@
             
             <!-- Early Arrival Note -->
             <div class="arrival-note">
-                <i class="fas fa-clock mr-2"></i> Please arrive 10-15 minutes before the start time.
+                <i class="fas fa-clock mr-2"></i> Please plan to arrive around 8:45 AM.
             </div>
 
             <ul class="activity-list">
@@ -254,9 +370,15 @@
                     <span class="activity-time">9:00 AM - 9:30 AM</span>
                     <span class="activity-name">Breakfast and Warm Up</span>
                 </li>
+                <!-- NEW: Opening Remark -->
                 <li class="activity-item">
-                    <span class="activity-time">9:30 AM - 11:00 AM</span>
-                    <span class="activity-name">Business Review and Planning 1</span>
+                    <span class="activity-time">9:30 AM - 10:00 AM</span>
+                    <span class="activity-name">Opening Remark</span>
+                </li>
+                <!-- ADJUSTED: Business Review and Planning 1 -->
+                <li class="activity-item">
+                    <span class="activity-time">10:00 AM - 11:00 AM</span>
+                    <span class="activity-name">Business Review and Planning Workshop 1</span>
                 </li>
                 <li class="activity-item">
                     <span class="activity-time">11:00 AM - 11:15 AM</span>
@@ -264,7 +386,7 @@
                 </li>
                 <li class="activity-item">
                     <span class="activity-time">11:15 AM - 12:15 PM</span>
-                    <span class="activity-name">Business Review and Planning 2</span>
+                    <span class="activity-name">Business Review and Planning Workshop 2</span>
                 </li>
                 <li class="activity-item">
                     <span class="activity-time">12:15 PM - 12:30 PM</span>
@@ -292,12 +414,86 @@
                     <span class="activity-name">White Elephant Gift Exchange
                     </span>
                 </li>
+                <!-- UPDATED ITEMS BELOW -->
                 <li class="activity-item">
-                    <span class="activity-time">5:00 PM - 8:00 PM</span>
-                    <span class="activity-name">In-person Activities & Team Dinner
-                    </span>
+                    <span class="activity-time">5:00 PM - 5:15 PM</span>
+                    <span class="activity-name">Break</span>
+                </li>
+                <li class="activity-item">
+                    <span class="activity-time">5:15 PM - 6:15 PM</span>
+                    <span class="activity-name">In-person Activity</span>
+                </li>
+                <li class="activity-item">
+                    <span class="activity-time">6:15 PM - 6:30 PM</span>
+                    <span class="activity-name">Break</span>
+                </li>
+                <li class="activity-item">
+                    <span class="activity-time">6:30 PM - 8:00 PM</span>
+                    <span class="activity-name">Team Dinner</span>
                 </li>
             </ul>
+
+            
+            <!-- Workshop 1 Subgroup Table -->
+            <div class="subgroup-section">
+                <h4>Business Review and Planning Workshop 1 Subgroups</h4>
+                <table class="subgroup-table col-two">
+                    <thead>
+                        <tr>
+                            <th class="col-two">PL Subgroup</th>
+                            <th class="col-two">Card Subgroup</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <strong>Host:</strong> Mingxiu<br>
+                                <strong>Participants:</strong> Bowen, Xinyi, Yun, Lukas, Bill, Yutong, Scott, Baris, Phil, David
+                            </td>
+                            <td>
+                                <strong>Host:</strong> Jessie<br>
+                                <strong>Participants:</strong> Sean, Ash, Flora, Jingjing, Mingyu, Hasha, Hov, Mantas, Yichun, Yao, Stephanie
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="full-width-cell">
+                                Flexible participants: Haiyan, Tao
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Brainstorm and Reflection Subgroup Table -->
+            <div class="subgroup-section">
+                <h4>Brainstorm and Reflection Subgroups</h4>
+                <table class="subgroup-table">
+                    <thead>
+                        <tr>
+                            <th>In Person Group 1</th>
+                            <th>In Person Group 2</th>
+                            <th>Remote Group</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <strong>Host:</strong> Tao, Yutong<br>
+                                <strong>Participants:</strong> Haiyan, Stephanie, Yao, Yun, Xinyi, Ash, Hasha, Flora, Mingyu, Tao, Yutong
+                            </td>
+                            <td>
+                                <strong>Host:</strong> Mingxiu, Yichun<br>
+                                <strong>Participants:</strong> Jessie, Baris, Lukas, Bowen, Bill, Scott, Mantas, Jingjing, Sean, Mingxiu, Yichun
+                            </td>
+                            <td>
+                                <strong>Host:</strong> David<br>
+                                <strong>Participants:</strong> Hov, Phil
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- End Subgroup Table Sections -->
         </div>
     </div>
     
